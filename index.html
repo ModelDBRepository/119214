@@ -1,0 +1,116 @@
+<html><head>
+  <script language="JavaScript" type="text/javascript" src="index_files/calc"></script>
+ 
+  <meta name="Author" content="Victor Matveev">
+  <meta name="description" content="Calcium Calculator example script files">
+  <meta name="Keywords" content="Calcium Calculator, scripts, CalC, download, calcium diffusion, calcium buffering">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"><title>Example Script Files for the "Calcium Calculator" Simulator</title> 
+
+
+
+<link rel="STYLESHEET" type="text/css" href="index_files/victor.css">
+
+<style type="text/css">
+
+       H4 {color: darkred; }
+/*       UL {font-size:small;} */
+/*       LI {font-size:small;} */
+
+       TD.color {font-size:8pt; color:#000000; font-family:sans-serif; background-color:#F0F0F0; padding:4pt; }  
+
+</style>
+
+<!-- base href="http://web.njit.edu/~matveev/calc/examples/Two_Site_Model/" -->
+
+<script language="JavaScript" type="text/javascript">
+makeTitle("Calcium Calculator Simulation Script Files");
+</script></head>
+<body width="600"><table width="600"><tbody><tr><td class="title" colspan="5" height="33" width="600">Calcium Calculator Simulation Script Files</td></tr><tr><td class="TCALC"><a class="TMENU" href="http://web.njit.edu/%7Ematveev/calc.html" target="_self">CalC Download</a></td> <td class="TCALC"><a class="TMENU" href="http://web.njit.edu/%7Ematveev/calc/manual.html" target="_self">CalC Manual</a></td> <td class="TCALC"><a class="TMENU" href="http://web.njit.edu/%7Ematveev/calc/scripts.html" target="_self">CalC Scripts</a></td> <td class="TCALC"><a class="TMENU" href="http://web.njit.edu/%7Ematveev/calc/calc_pub.html" target="_self">CalC Publications</a></td> <td class="TMENU"><a class="TMENU" href="http://web.njit.edu/%7Ematveev/" target="_top">Victor's Homepage</a></td> </tr></tbody></table><br>
+<br>
+
+The scripts following below reproduce the simulation results presented
+in the manuscript (see <a href="http://web.njit.edu/%7Ematveev/documents/figs_TSM_123.pdf">
+Figs. 1-3</a>):<br>
+<table border="1" cellpadding="3"><tbody><tr><td class="color">
+<a href="http://web.njit.edu/%7Ematveev/" target="_top">V. Matveev</a>,
+<a href="http://mrb.niddk.nih.gov/sherman/" target="_top">A. Sherman</a>,
+<a href="http://mcb.berkeley.edu/faculty/NEU/zuckerr.html" target="_top">R.S. Zucker</a>,
+(2002) <br>
+<b>New and Corrected Simulations of Synaptic Facilitation </b><br>
+<i>Biophysical Journal</i> <b>83</b>:1368-1373.
+<a href="http://www.biophysj.org/cgi/content/full/83/3/1368">[ Full Text ]</a>
+<a href="http://web.njit.edu/%7Ematveev/documents/Matveev_BJ83,1358a.pdf">[ PDF (134 KB) ]</a><br>
+</td></tr></tbody></table>
+The comments in these script files 
+provide a detailed step-by-step descrption of the corresponding simulations.<br>
+All of the files below should be placed in the same subdirectory before running
+the simulations:
+
+<br><br>
+
+<table border="1" cellpadding="10" width="600"><tbody><tr><td bgcolor="white">
+<a href="http://web.njit.edu/%7Ematveev/calc/examples/Two_Site_Model/STF.growth.par">STF.growth.par</a> 
+- simulation script calculating the [Ca<sup>2+</sup>] profiles and facilitation growth curves 
+for a five-pulse stimulus train (at 100 Hz), shown in Figs. 1 and 2, B-D.<br><br>
+
+The facilitation decay time courses shown in Fig. 3(B-D) are computed in two stages:<br><br>
+1. <a href="http://web.njit.edu/%7Ematveev/calc/examples/Two_Site_Model/STF.decay.stage1.par">STF.decay.stage1.par</a> - generates the [Ca<sup>2+</sup>] files 
+corresponding to the different interspike interval values.<br>
+2. <a href="http://web.njit.edu/%7Ematveev/calc/examples/Two_Site_Model/STF.decay.stage2.par">STF.decay.stage2.par</a> - uses the  [Ca<sup>2+</sup>] files 
+created at 1st stage to compute the STF decay time course.<br><br>
+
+The above scripts rely on (i.e., import)
+the following scripts describing the model systems of PDEs and ODEs:<br><br>
+A. <a href="http://web.njit.edu/%7Ematveev/calc/examples/Two_Site_Model/quoted.pde.par">quoted.pde.par</a> - the <i><b>quoted</b></i> parameter set <br>
+B. <a href="http://web.njit.edu/%7Ematveev/calc/examples/Two_Site_Model/actual.pde.par">actual.pde.par</a> - the <i><b>actual</b></i> parameter set <br>
+C. <a href="http://web.njit.edu/%7Ematveev/calc/examples/Two_Site_Model/modified.pde.par">modified.pde.par</a> - the <i><b>modified</b></i> parameter set <br>
+D. <a href="http://web.njit.edu/%7Ematveev/calc/examples/Two_Site_Model/tortuosity.pde.par">tortuosity.pde.par</a> - the parameter set with <i><b>tortuosity</b></i><br><br>
+
+<a href="http://web.njit.edu/%7Ematveev/calc/examples/Two_Site_Model/XY.ode.par">XY.ode.par</a> - the script describing the [Ca<sup><small>2+</small></sup>] binding scheme
+ODEs.
+</td></tr></tbody></table><br>
+
+To reproduce, for example, the Fura-2 curve of Fig. 2 C, execute the following command:
+<ul>
+<li>calc STF.growth.par C with
+</li></ul>
+
+To reproduce the control curve (without Fura) of Fig. 3 D, execute the
+following two commands </br> (see comments at the beginning of the
+script for details):
+
+<br>
+<ul>
+<li>calc STF.decay.stage1.par D without 10.0 800.0 25
+</li><li>calc STF.decay.stage2.par D without
+</li></ul>
+<br>
+<font color="red">Note for Windows users: </font> Under Windows, file operations do not default to current 
+directory <br/>
+(a nuisance!), so make sure that the parameter <b>path</b> defined in scripts 
+<a href="http://web.njit.edu/%7Ematveev/calc/examples/Two_Site_Model/STF.growth.par">STF.growth.par</a>,<br/> 
+<a href="http://web.njit.edu/%7Ematveev/calc/examples/Two_Site_Model/STF.decay.stage1.par">STF.decay.stage1.par</a> and
+<a href="http://web.njit.edu/%7Ematveev/calc/examples/Two_Site_Model/STF.decay.stage2.par">STF.decay.stage2.par</a> points to the directory where all 
+the script files are residing.
+
+<hr>
+<address>
+<small>
+<a href="http://web.njit.edu/%7Ematveev" target="_top">Victor Matveev</a>
+</small>
+</address><!-- table align=right cellpadding=3><tr><td bgcolor="#E0FFEA">
+<a href="../scripts.html">[ Back to Scripts ]</a>
+</td></tr></table -->
+
+<small>
+This server is running a 
+<a href="http://www.redhat.com/" target="_top">Redhat</a> distribution of 
+<a href="http://www.linux.org/" target="_top">Linux</a>.
+<br>
+<!-- Created: Sun Apr 12 18:25:17 EDT 1998 -->
+<!-- hhmts start -->
+Last modified: Wed Jun 9, 2004
+<!-- hhmts end -->
+</small>
+
+</body></html>
