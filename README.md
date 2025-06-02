@@ -51,14 +51,12 @@ To reproduce the control curve (without Fura) of Fig. 3 D, execute the following
 
 <small><a href="http://web.njit.edu/%7Ematveev" target="_top">Victor Matveev</a></small>
 
-<small>
+
 This server is running a
 [Redhat](http://www.redhat.com/) distribution of
 [Linux](http://www.linux.org/).
-<br>
-Last modified: Wed Jun 9, 2004
-</small>
 
 ---
+Last modified: Wed Jun 9, 2004
 
-2025-06-02: Converted README to Markdown.
+Converted README to Markdown: Mon Jun 2, 2025
